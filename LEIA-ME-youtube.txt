@@ -1,0 +1,11 @@
+INSTALAÇÃO — VÍDEO DO YOUTUBE
+
+1. Faça uma cópia de segurança dos arquivos atuais.
+2. Extraia este ZIP dentro da pasta ANIVERSÁRIO, mantendo as pastas.
+3. Substitua CSS/style.css e JS/app.js pelos arquivos deste pacote.
+4. Não é necessário alterar Index_Trilha_Sonora.html.
+5. A pasta videos e o arquivo mensagem.mp4 deixam de ser necessários para esse recurso; você pode mantê-los ou apagá-los depois.
+6. Abra/atualize o site pelo Live Server com Ctrl+F5.
+
+O botão cria uma janela e incorpora o vídeo do YouTube de ID IdwJ5XVIagw.
+Ao fechar a janela, o iframe é removido para interromper a reprodução.

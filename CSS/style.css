@@ -1,0 +1,569 @@
+:root {
+    --navy-950: #020617;
+    --navy-900: #050b24;
+    --navy-800: #0a1640;
+    --blue-500: #2563eb;
+    --blue-300: #ff9aaa;
+    --cyan: #ff9aaa;
+    --gold: #ff9aaa;
+    --text: #eaf1ff;
+    --muted: #9fb4e6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    background: var(--navy-950);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent
+}
+
+body {
+    background: radial-gradient(ellipse at 50% 40%, #0b1d5c 0%, #050b24 45%, #01030d 100%)
+}
+
+#c {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: none;
+    outline: none
+}
+
+/* Intro */
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
+    padding: 24px;
+    background: radial-gradient(ellipse at 50% 35%, #0c2270 0%, #050b24 55%, #01030d 100%);
+    transition: opacity 1.2s ease, visibility 1.2s
+}
+
+#intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+#intro .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1.5px 1.5px at 12% 20%, #fff 50%, transparent 51%),
+        radial-gradient(1px 1px at 80% 15%, #ffb3bf 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 65% 70%, #fff 50%, transparent 51%),
+        radial-gradient(1px 1px at 25% 80%, #9fc2ff 50%, transparent 51%),
+        radial-gradient(1px 1px at 90% 60%, #fff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 40% 35%, #ffc0cb 50%, transparent 51%);
+    animation: twinkle 4s ease-in-out infinite alternate
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .45
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+#intro .orb {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    background: radial-gradient(circle at 35% 30%, #ffe1e7, #ff879b 45%, #e84a67 100%);
+    box-shadow: 0 0 40px 10px rgba(255, 135, 155, .28), 0 0 120px 30px rgba(59, 130, 246, .35);
+    animation: float 4s ease-in-out infinite
+}
+
+@keyframes float {
+    50% {
+        transform: translateY(-8px)
+    }
+}
+
+#intro h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: clamp(28px, 6vw, 52px);
+    line-height: 1.15;
+    max-width: 18ch;
+    position: relative;
+    z-index: 1
+}
+
+#intro p {
+    color: var(--muted);
+    font-size: clamp(14px, 2.4vw, 18px);
+    position: relative;
+    z-index: 1
+}
+
+#enter {
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    font: 500 16px 'Inter', sans-serif;
+    padding: 15px 30px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #1746a2, #2563eb 68%, #ff9aaa);
+    box-shadow: 0 8px 30px rgba(23, 70, 162, .45);
+    transition: transform .2s, box-shadow .2s
+}
+
+#enter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(255, 135, 155, .28)
+}
+
+#enter:active {
+    transform: scale(.97)
+}
+
+/* HUD */
+#hint {
+    position: fixed;
+    left: 50%;
+    bottom: calc(22px + env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(10, 22, 64, .55);
+    border: 1px solid rgba(255, 135, 155, .24);
+    backdrop-filter: blur(8px);
+    font-size: 13px;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity .8s;
+    pointer-events: none;
+    white-space: nowrap
+}
+
+#hint.show {
+    opacity: 1
+}
+
+#audioControls {
+    position: fixed;
+    top: calc(16px + env(safe-area-inset-top));
+    right: 16px;
+    z-index: 40;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 135, 155, .28);
+    border-radius: 999px;
+    background: rgba(10, 22, 64, .82);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .25);
+}
+
+#audioControls.show {
+    display: flex;
+}
+
+#music {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 135, 155, .35);
+    background: rgba(23, 70, 162, .4);
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#volumeLabel {
+    color: #eaf1ff;
+    font-size: 12px;
+}
+
+#volumeControl {
+    width: 100px;
+    accent-color: #ff9aaa;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    #audioControls {
+        top: calc(10px + env(safe-area-inset-top));
+        right: 10px;
+        gap: 7px;
+        padding: 6px 9px;
+    }
+
+    #volumeControl {
+        width: 76px;
+    }
+}
+
+/* Card */
+#card {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 4vw 6vw;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .5s
+}
+
+#card.open {
+    opacity: 1;
+    pointer-events: auto
+}
+
+#card .back {
+    position: absolute;
+    inset: 0
+}
+
+#card .box {
+    position: relative;
+    width: min(420px, 100%);
+    max-height: 86vh;
+    overflow: auto;
+    padding: 22px;
+    border-radius: 24px;
+    background: linear-gradient(160deg, rgba(10, 24, 68, .94), rgba(8, 10, 35, .96));
+    border: 1px solid rgba(255, 135, 155, .24);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .55), 0 0 60px rgba(59, 130, 246, .25);
+    backdrop-filter: blur(14px);
+    transform: translateY(16px) scale(.97);
+    transition: transform .5s cubic-bezier(.2, .8, .2, 1)
+}
+
+#card.open .box {
+    transform: none
+}
+
+#card .photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    background: linear-gradient(135deg, #1d4ed8, #0a1640);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px
+}
+
+#card .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 55%;
+    display: block
+}
+
+#card h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #fff
+}
+
+#card .txt {
+    white-space: pre-line;
+    line-height: 1.65;
+    color: #d6e3ff;
+    font-size: 16px
+}
+
+#soundtrackPicker {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 135, 155, .22)
+}
+
+#soundtrackPicker[hidden] {
+    display: none !important;
+}
+
+.soundtrack-label {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px
+}
+
+#soundtrackList {
+    display: grid;
+    gap: 8px;
+}
+
+.track-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 12px;
+    text-align: left;
+    color: #eaf1ff;
+    background: rgba(23, 70, 162, .22);
+    border: 1px solid rgba(255, 135, 155, .24);
+    border-radius: 12px;
+    font: 14px 'Inter', sans-serif;
+    cursor: pointer
+}
+
+.track-option:hover,
+.track-option.active {
+    background: rgba(255, 135, 155, .16);
+    border-color: rgba(255, 135, 155, .65)
+}
+
+.track-option .track-icon {
+    font-size: 17px;
+}
+
+#soundtrackEmpty,
+#nowPlaying {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5
+}
+
+#nowPlaying:empty {
+    display: none;
+}
+
+#card .close {
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid rgba(255, 135, 155, .30);
+    background: rgba(23, 70, 162, .25);
+    color: #fff;
+    font: 500 15px 'Inter', sans-serif;
+    padding: 13px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background .2s
+}
+
+#card .close:hover {
+    background: rgba(255, 135, 155, .20)
+}
+
+@media (max-width:760px) {
+    #card {
+        align-items: flex-end;
+        justify-content: center;
+        padding: 0
+    }
+
+    #card .box {
+        width: 100%;
+        max-height: 58vh;
+        border-radius: 24px 24px 0 0;
+        padding: 18px 18px calc(18px + env(safe-area-inset-bottom))
+    }
+
+    #card .photo {
+        aspect-ratio: 16/10;
+        margin-bottom: 14px
+    }
+
+    #card h2 {
+        font-size: 22px
+    }
+
+    #card .txt {
+        font-size: 15px
+    }
+}
+
+
+/* ---------- Botão e janela da mensagem em vídeo ---------- */
+#videoBtn {
+    position: fixed;
+    top: calc(16px + env(safe-area-inset-top));
+    left: 16px;
+    z-index: 45;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: calc(100vw - 150px);
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 154, 170, .36);
+    border-radius: 999px;
+    color: #fff;
+    background: rgba(10, 22, 64, .84);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .24), 0 0 22px rgba(255, 154, 170, .12);
+    font: 500 13px 'Inter', system-ui, sans-serif;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+#videoBtn:hover {
+    transform: translateY(-2px);
+    background: rgba(23, 45, 105, .94);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, .3), 0 0 28px rgba(255, 154, 170, .22);
+}
+
+#videoBtn:active {
+    transform: scale(.98);
+}
+
+#videoBtn:focus-visible,
+#closeVideo:focus-visible {
+    outline: 2px solid #ffb3bf;
+    outline-offset: 3px;
+}
+
+#videoModal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s ease, visibility .3s ease;
+}
+
+#videoModal.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+#videoModal .videoBack {
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 3, 13, .84);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+#videoModal .videoBox {
+    position: relative;
+    z-index: 1;
+    width: min(900px, 100%);
+    max-height: 90vh;
+    overflow: hidden;
+    border: 1px solid rgba(255, 154, 170, .32);
+    border-radius: 22px;
+    background: linear-gradient(160deg, rgba(10, 24, 68, .98), rgba(2, 6, 23, .99));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .58), 0 0 55px rgba(37, 99, 235, .2);
+    transform: translateY(12px) scale(.985);
+    transition: transform .3s ease;
+}
+
+#videoModal.open .videoBox {
+    transform: none;
+}
+
+#videoModal .videoHeading {
+    padding: 16px 58px 14px 18px;
+    color: #fff;
+    font: 600 18px 'Playfair Display', Georgia, serif;
+}
+
+#videoModal .youtubePlayer {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #01030d;
+}
+
+#videoModal .youtubePlayer iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    border: 0;
+    background: #01030d;
+}
+
+#videoModal #closeVideo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 154, 170, .3);
+    border-radius: 50%;
+    color: #fff;
+    background: rgba(1, 3, 13, .72);
+    font: 20px/1 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+
+#videoModal #closeVideo:hover {
+    background: rgba(255, 154, 170, .22);
+    transform: rotate(90deg);
+}
+
+@media (max-width: 760px) {
+    #videoBtn {
+        top: calc(10px + env(safe-area-inset-top));
+        left: 10px;
+        gap: 6px;
+        max-width: calc(100vw - 145px);
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    #videoModal {
+        padding: 12px;
+    }
+
+    #videoModal .videoBox {
+        border-radius: 16px;
+    }
+
+    #videoModal .videoHeading {
+        padding: 14px 54px 12px 14px;
+        font-size: 16px;
+    }
+
+    #videoModal #closeVideo {
+        top: 8px;
+        right: 8px;
+        width: 34px;
+        height: 34px;
+    }
+}

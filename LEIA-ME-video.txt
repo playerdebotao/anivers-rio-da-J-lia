@@ -1,0 +1,10 @@
+INSTALAÇÃO DA MENSAGEM EM VÍDEO
+
+1. Faça uma cópia de segurança dos arquivos atuais.
+2. Extraia este ZIP dentro da pasta ANIVERSÁRIO, mantendo a estrutura de pastas.
+3. Confirme que os arquivos substituídos ficam em CSS/style.css e JS/app.js.
+4. Coloque seu vídeo MP4 em videos/mensagem.mp4.
+5. Abra a página usando Live Server e teste o botão no canto superior esquerdo.
+
+O botão e a janela são criados pelo JS; não é necessário editar o HTML.
+O vídeo deve ter o nome exato mensagem.mp4 e ficar dentro da pasta videos.

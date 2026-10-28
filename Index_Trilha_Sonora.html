@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Feliz Aniversário</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- =====================================================================
+     ✏️  EDITE AQUI  — nome, fotos, textos e música
+     ===================================================================== -->
+    <script src="js/config.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+
+<body>
+
+    <canvas id="c"></canvas>
+
+    <div id="intro">
+        <div class="stars"></div>
+        <div class="orb"></div>
+        <h1 id="introTitle"></h1>
+        <p id="introSub"></p>
+        <button id="enter"></button>
+    </div>
+
+    <div id="hint"></div>
+    <div id="audioControls" aria-label="Controles de áudio">
+        <button id="music" aria-label="Silenciar música" title="Silenciar ou ativar música">🔊</button>
+        <label id="volumeLabel" for="volumeControl">Volume</label>
+        <input id="volumeControl" type="range" min="0" max="100" value="100" step="1"
+            aria-label="Volume geral da música">
+    </div>
+    <audio id="bgm" loop preload="metadata"></audio>
+
+    <div id="card" aria-hidden="true">
+        <div class="back"></div>
+        <div class="box" role="dialog" aria-modal="true">
+            <div class="photo" id="cardPhoto"></div>
+            <h2 id="cardTitle"></h2>
+            <div class="txt" id="cardText"></div>
+            <div id="soundtrackPicker" aria-label="Escolha a trilha sonora" hidden>
+                <p class="soundtrack-label">🎵 Escolha a trilha sonora</p>
+                <div id="soundtrackList"></div>
+                <p id="soundtrackEmpty">Suas músicas vão aparecer aqui. Adicione os arquivos na lista
+                    <code>trilhaSonora</code> do bloco CONFIG.
+                </p>
+                <p id="nowPlaying" aria-live="polite"></p>
+            </div>
+            <button class="close" id="cardClose">Voltar ao universo</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

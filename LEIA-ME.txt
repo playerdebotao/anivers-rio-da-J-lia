@@ -1,0 +1,16 @@
+PROJETO DE ANIVERSÁRIO — ORGANIZADO
+
+Estrutura:
+- Index_Trilha_Sonora.html: página principal.
+- css/style.css: estilos e cores.
+- js/config.js: nome, textos, fotos, planetas e configuração da música.
+- js/app.js: Three.js, galáxia, planetas, animações e interações.
+- fotos/: coloque aqui as imagens, se for usar caminhos como fotos/julia.jpg.
+- musicas/: coloque aqui os arquivos de música, se for usar caminhos como musicas/minha-musica.mp3.
+
+IMPORTANTE:
+1. Mantenha todos esses arquivos e pastas juntos.
+2. Abra a pasta Projeto_Aniversario_Organizado no VS Code.
+3. Para testar, use uma extensão como Live Server e abra Index_Trilha_Sonora.html.
+4. Não abra apenas o app.js: a página principal é Index_Trilha_Sonora.html.
+5. A lógica original do JavaScript foi mantida em um único arquivo para evitar quebrar dependências entre funções.
